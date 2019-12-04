@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 
+# Emporzhiet e vez ar modul 'socket' evit implij ar fonksionoù rouedad
 import socket
+
 
 HOSTNAME = "" #socket.gethostname()
 PORT = 64646
@@ -18,7 +20,6 @@ resevet = dict()
 
 while True:
     (clientsocket, address) = serversocket.accept()
-    #clientsocket.sendall("Petra eo da añv ? ".encode('utf-8'))
     data = clientsocket.recv(128)
     if address[0] in resevet:
         resevet[address[0]].append(data.decode('utf-8'))
