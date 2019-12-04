@@ -6,12 +6,12 @@ import socket
 
 
 # Termenet e vez ar fonksion 'netcat'
-def netcat(anaouder, porz, titour):
+def netcat(anaouder, porzh, titour):
     # Digoret e vez un 'nor' gant ar protokol TCP war hor urzhiataer
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     
     # Kevreet e vez gant ar servijer
-    s.connect((anaouder, porz))
+    s.connect((anaouder, porzh))
     
     # Kaset e vez an titouroù
     s.sendall(titour.encode("utf-8"))

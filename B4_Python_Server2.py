@@ -21,11 +21,14 @@ resevet = dict()
 while True:
     (clientsocket, address) = serversocket.accept()
     data = clientsocket.recv(128)
-    if address[0] in resevet:
-        resevet[address[0]].append(data.decode('utf-8'))
+    ostiz = address[0]
+    pseudo = f"{address[0]}:{address[1]}"
+    if ostiz in resevet:
+        resevet[ostiz].append(data.decode('utf-8'))
+        pseudo = resevet[ostiz][0][:12].strip()
     else:
-        resevet[address[0]] = [data.decode('utf-8')]
+        resevet[ostiz] = [data.decode('utf-8')]
     
-    print("[{}:{}]\t{}".format(address[0], address[1], data.decode('utf-8')))
+    print("[{}] {}".format(pseudo, data.decode('utf-8')))
     clientsocket.sendall("OK".encode('latin-1'))
     clientsocket.close()
